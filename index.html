@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#f8efe9" />
+  <title>Petal & Pot</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="apple-touch-icon" href="icon.svg">
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <div class="hero-main">
+        <div class="brand-row">
+          <div class="brand-mark">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="32" cy="32" r="30" fill="#f7f3ee"/>
+              <path d="M34 21c-12-18-29-12-27 2 2 13 16 20 27 13" fill="#9ebd9a"/>
+              <path d="M36 24c12-17 28-15 29-1 1 14-15 21-28 15" fill="#7fa688"/>
+              <path d="M34 23v22M24 26l9 18M44 27l-10 18" stroke="#5f7d68" stroke-width="2.8" stroke-linecap="round"/>
+              <path d="M19 42h26l-3 11H22z" fill="#d8b29d"/>
+              <path d="M17 40h30c2 0 3 1 3 3s-1 3-3 3H17c-2 0-3-1-3-3s1-3 3-3z" fill="#e7c7b7"/>
+            </svg>
+          </div>
+          <div>
+            <span class="mini-label">PETAL & POT</span>
+            <h1>My collection</h1>
+          </div>
+        </div>
+        <p>Everything you’re growing, all in one place.</p>
+      </div>
+      <div class="hero-panel app-summary">
+        <div><span>Plants</span><strong id="heroPlants">0</strong></div>
+        <div><span>Corms</span><strong id="heroCorms">0</strong></div>
+        <div><span>Wishlist</span><strong id="heroWish">0</strong></div>
+      </div>
+    </header>
+
+    <section class="stats">
+      <div class="stat-card">
+        <div class="mini-spot green">
+          <svg viewBox="0 0 24 24"><path d="M12 21V8M12 12c-5 1-8-2-8-7 5-1 8 2 8 7Zm0 2c5 1 8-2 8 7-5-1-8 2-8 7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><strong id="plantTypes">0</strong><small>Plant types</small></div>
+      </div>
+      <div class="stat-card">
+        <div class="mini-spot peach">
+          <svg viewBox="0 0 24 24"><path d="M4 10h16l-2 9H6zM3 9h18M12 4v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><strong id="plantCount">0</strong><small>Total plants</small></div>
+      </div>
+      <div class="stat-card">
+        <div class="mini-spot tan">
+          <svg viewBox="0 0 24 24"><path d="M12 5c3 0 5 2 5 5 0 4-3 7-5 9-2-2-5-5-5-9 0-3 2-5 5-5Zm0 0V2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><strong id="cormCount">0</strong><small>Corms</small></div>
+      </div>
+      <div class="stat-card">
+        <div class="mini-spot pink">
+          <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><strong id="wishCount">0</strong><small>Wishlist</small></div>
+      </div>
+    </section>
+
+    <main class="content">
+      <section class="page active" id="homePage">
+        <div class="section-head">
+          <div>
+            <span class="mini-label">COLLECTION</span>
+            <h2>My Plants</h2>
+          </div>
+          <button class="round-add" id="addPlantTop" aria-label="Add plant">＋</button>
+        </div>
+
+        <div class="search-wrap">
+          <span class="search-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></svg>
+          </span>
+          <input id="collectionSearch" type="search" placeholder="Search your plants">
+        </div>
+
+        <div id="collectionEmpty" class="empty-card">
+          <div class="empty-svg">
+            <svg viewBox="0 0 180 120" aria-hidden="true">
+              <ellipse cx="93" cy="108" rx="52" ry="8" fill="#e9e0d6"/>
+              <path d="M73 53c-16-23-43-21-46-5-4 18 20 35 44 26" fill="#9dbb98"/>
+              <path d="M103 55c17-27 45-28 50-9 4 18-18 36-45 28" fill="#7fa889"/>
+              <path d="M91 62v25M77 65l11 20M107 65L95 87" stroke="#5c7965" stroke-width="4" stroke-linecap="round"/>
+              <path d="M58 80h66l-8 24H66z" fill="#ebb0a8"/>
+              <path d="M53 76h76c3 0 5 2 5 4s-2 4-5 4H53c-3 0-5-2-5-4s2-4 5-4z" fill="#f3c1b8"/>
+              <circle cx="128" cy="29" r="16" fill="#fff6ef"/>
+              <path d="M123 31c-4-1-6-4-6-8 5-1 8 1 9 5" fill="#a8c59f"/>
+              <path d="M130 31c5-1 8-5 8-10-6-1-10 2-11 7" fill="#86ae8e"/>
+            </svg>
+          </div>
+          <h3>Your plant collection starts here</h3>
+          <p>Add your first plant to start tracking photos, notes, and how many you own.</p>
+          <button class="cute-btn" id="addPlantEmpty">Add my first plant</button>
+        </div>
+
+        <div id="collectionGrid" class="plant-grid"></div>
+      </section>
+
+      <section class="page" id="wishlistPage">
+        <div class="section-head">
+          <div>
+            <span class="mini-label">DREAM PLANTS</span>
+            <h2>Wishlist</h2>
+          </div>
+          <button class="round-add pink" id="addWishTop" aria-label="Add wishlist plant">＋</button>
+        </div>
+
+        <div class="search-wrap">
+          <span class="search-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></svg>
+          </span>
+          <input id="wishlistSearch" type="search" placeholder="Search wishlist">
+        </div>
+
+        <div id="wishlistEmpty" class="empty-card pinkish">
+          <div class="empty-svg">
+            <svg viewBox="0 0 180 120" aria-hidden="true">
+              <circle cx="62" cy="57" r="18" fill="#f9eae6"/>
+              <path d="M62 75s-12-7.8-12-17a7 7 0 0 1 12-4.6A7 7 0 0 1 74 58c0 9.2-12 17-12 17Z" fill="#d98b8b"/>
+              <path d="M98 38c20-5 40 8 45 29-22 4-40-9-45-29Z" fill="#91b192"/>
+              <path d="M92 43c0 24 14 41 37 46" fill="none" stroke="#607d68" stroke-width="4" stroke-linecap="round"/>
+              <path d="M109 82h40l-5 18h-29z" fill="#ebb0a8"/>
+              <path d="M106 79h46c2 0 4 2 4 4s-2 4-4 4h-46c-2 0-4-2-4-4s2-4 4-4z" fill="#f3c1b8"/>
+            </svg>
+          </div>
+          <h3>Keep your wishlist organized</h3>
+          <p>Save plants you want later and attach a reference photo or image link.</p>
+          <button class="cute-btn pink-btn" id="addWishEmpty">Add a wishlist plant</button>
+        </div>
+
+        <div id="wishlistGrid" class="plant-grid"></div>
+      </section>
+
+
+      <section class="page" id="cormsPage">
+        <div class="section-head">
+          <div>
+            <span class="mini-label">PROPAGATION</span>
+            <h2>My Corms</h2>
+          </div>
+          <button class="round-add tan-btn" id="addCormTop" aria-label="Add corm">＋</button>
+        </div>
+
+        <div class="search-wrap">
+          <span class="search-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></svg>
+          </span>
+          <input id="cormSearch" type="search" placeholder="Search corms">
+        </div>
+
+        <div class="status-filters" id="cormFilters">
+          <button class="filter-chip active" data-status="all">All</button>
+          <button class="filter-chip" data-status="Dormant">Dormant</button>
+          <button class="filter-chip" data-status="Sprouting">Sprouting</button>
+          <button class="filter-chip" data-status="Rooted">Rooted</button>
+          <button class="filter-chip" data-status="Ready to pot">Ready to pot</button>
+        </div>
+
+        <div id="cormEmpty" class="empty-card cormish">
+          <div class="empty-svg">
+            <svg viewBox="0 0 180 120" aria-hidden="true">
+              <ellipse cx="91" cy="101" rx="52" ry="8" fill="#e7ddd1"/>
+              <path d="M91 72c-17 0-29-11-29-27 0-13 9-24 29-24s29 11 29 24c0 16-12 27-29 27Z" fill="#c9aa85"/>
+              <path d="M91 25c0-11 6-18 14-20" fill="none" stroke="#6a836d" stroke-width="4" stroke-linecap="round"/>
+              <path d="M103 5c12 0 19 7 20 17-12 1-20-5-20-17Z" fill="#91b292"/>
+              <path d="M58 78h66l-7 23H65z" fill="#e7b09f"/>
+              <path d="M54 75h74c3 0 5 2 5 4s-2 4-5 4H54c-3 0-5-2-5-4s2-4 5-4z" fill="#f2c0b0"/>
+            </svg>
+          </div>
+          <h3>Track corm progress</h3>
+          <p>Log quantity, photos, and progress as each corm moves from dormant to ready to pot.</p>
+          <button class="cute-btn tan-solid" id="addCormEmpty">Add a corm</button>
+        </div>
+
+        <div id="cormGrid" class="plant-grid"></div>
+      </section>
+
+      <section class="page" id="settingsPage">
+        <div class="section-head">
+          <div>
+            <span class="mini-label">KEEP IT SAFE</span>
+            <h2>Backup</h2>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-illustration">
+            <svg viewBox="0 0 110 110" aria-hidden="true">
+              <circle cx="55" cy="55" r="48" fill="#fff7f2"/>
+              <path d="M28 65h54a8 8 0 0 0 8-8 13 13 0 0 0-22-9 18 18 0 0 0-34 6 11 11 0 0 0-6 11Z" fill="#dfeadb"/>
+              <path d="M56 34v28M46 52l10 10 10-10" fill="none" stroke="#6c8b74" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Back up your plant shelf</h3>
+          <p>This app saves your catalog on this device. Download a backup whenever you want, or restore one later.</p>
+          <button class="cute-btn" id="downloadBackupBtn">Download backup</button>
+          <label class="upload-btn">
+            Restore backup
+            <input id="restoreBackupInput" type="file" accept=".json,application/json">
+          </label>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-page="homePage">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 21V8M12 12c-5 1-8-2-8-7 5-1 8 2 8 7Zm0 2c5 1 8-2 8-7-5-1-8 2-8 7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span><small>Plants</small>
+      </button>
+      <button class="nav-item" data-page="cormsPage">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 5c3 0 5 2 5 5 0 4-3 7-5 9-2-2-5-5-5-9 0-3 2-5 5-5Zm0 0V2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span><small>Corms</small>
+      </button>
+      <button class="nav-center" id="navAddBtn" aria-label="Add item">＋</button>
+      <button class="nav-item" data-page="wishlistPage">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span><small>Wishlist</small>
+      </button>
+      <button class="nav-item" data-page="settingsPage">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm8 3-2 .7a6.7 6.7 0 0 1-.4 1l1 1.9-1.9 1.9-1.9-1a6.7 6.7 0 0 1-1 .4L12 20l-1.7-2a6.7 6.7 0 0 1-1-.4l-1.9 1-1.9-1.9 1-1.9a6.7 6.7 0 0 1-.4-1L4 12.5l2-.7a6.7 6.7 0 0 1 .4-1l-1-1.9 1.9-1.9 1.9 1a6.7 6.7 0 0 1 1-.4L12 4l1.7 2a6.7 6.7 0 0 1 1 .4l1.9-1 1.9 1.9-1 1.9a6.7 6.7 0 0 1 .4 1l2 .7Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span><small>Backup</small>
+      </button>
+    </nav>
+  </div>
+
+
+  <section id="plantDetailView" class="detail-view" aria-hidden="true">
+    <div class="detail-topbar">
+      <button class="detail-icon-btn" id="detailBackBtn" aria-label="Back">
+        <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <span>Plant details</span>
+      <button class="detail-text-btn" id="detailEditBtn">Edit</button>
+    </div>
+
+    <div id="detailGallery" class="detail-gallery"></div>
+
+    <div class="detail-body">
+      <div class="detail-title-row">
+        <div>
+          <div class="detail-kicker">MY COLLECTION</div>
+          <h2 id="detailPlantName">Plant name</h2>
+          <p id="detailPlantVariety"></p>
+        </div>
+      </div>
+
+      <div class="detail-cards">
+        <div class="detail-stat">
+          <span>Quantity</span>
+          <div class="quantity-stepper">
+            <button id="detailQtyMinus" aria-label="Decrease quantity">−</button>
+            <strong id="detailPlantQty">1</strong>
+            <button id="detailQtyPlus" aria-label="Increase quantity">＋</button>
+          </div>
+        </div>
+        <div class="detail-stat">
+          <span>Photos</span>
+          <strong id="detailPhotoCount">0</strong>
+        </div>
+      </div>
+
+      <section class="detail-notes">
+        <div class="detail-section-label">Notes</div>
+        <p id="detailPlantNotes">No notes yet.</p>
+      </section>
+
+      <button class="detail-primary" id="detailEditMainBtn">Edit plant</button>
+      <button class="detail-delete" id="detailDeleteBtn">Remove from collection</button>
+    </div>
+  </section>
+
+  <dialog id="plantDialog">
+    <form method="dialog" id="plantForm" class="sheet">
+      <div class="drag-pill"></div>
+      <div class="modal-title-row">
+        <div>
+          <span class="mini-label">MY COLLECTION</span>
+          <h2 id="plantDialogTitle">Add a plant</h2>
+        </div>
+        <button type="button" class="close" data-close="plantDialog">×</button>
+      </div>
+
+      <input id="plantId" type="hidden">
+
+      <label>Plant name
+        <input id="plantName" required placeholder="Monstera Thai Constellation">
+      </label>
+
+      <div class="two-col">
+        <label>Quantity
+          <input id="plantQty" type="number" min="1" value="1" required>
+        </label>
+        <label>Variety
+          <input id="plantVariety" placeholder="Optional">
+        </label>
+      </div>
+
+      <label>Photos
+        <input id="plantPhotos" type="file" accept="image/*" multiple>
+      </label>
+
+      <div id="plantPhotoPreview" class="preview-strip"></div>
+
+      <label>Notes
+        <textarea id="plantNotes" rows="3" placeholder="Potting mix, seller, size, where you keep it…"></textarea>
+      </label>
+
+      <div class="sheet-actions">
+        <button type="button" class="soft-btn" data-close="plantDialog">Cancel</button>
+        <button type="submit" class="cute-btn">Save plant</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="wishDialog">
+    <form method="dialog" id="wishForm" class="sheet">
+      <div class="drag-pill"></div>
+      <div class="modal-title-row">
+        <div>
+          <span class="mini-label">WISHLIST</span>
+          <h2 id="wishDialogTitle">Add a dream plant</h2>
+        </div>
+        <button type="button" class="close" data-close="wishDialog">×</button>
+      </div>
+
+      <input id="wishId" type="hidden">
+
+      <label>Plant name
+        <input id="wishName" required placeholder="Philodendron Whipple Way">
+      </label>
+
+      <label>Photo from your phone
+        <input id="wishPhoto" type="file" accept="image/*">
+      </label>
+
+      <div class="or"><span></span><em>or paste a photo link</em><span></span></div>
+
+      <label>Image URL
+        <input id="wishImageUrl" type="url" placeholder="https://...">
+      </label>
+
+      <div id="wishPhotoPreview" class="preview-strip"></div>
+
+      <label>Notes
+        <textarea id="wishNotes" rows="3" placeholder="Seller, price, color form, why you love it…"></textarea>
+      </label>
+
+      <div class="sheet-actions">
+        <button type="button" class="soft-btn" data-close="wishDialog">Cancel</button>
+        <button type="submit" class="cute-btn pink-btn">Save wishlist plant</button>
+      </div>
+    </form>
+  </dialog>
+
+
+  <dialog id="cormDialog">
+    <form method="dialog" id="cormForm" class="sheet">
+      <div class="drag-pill"></div>
+      <div class="modal-title-row">
+        <div>
+          <span class="mini-label">CORM TRACKER</span>
+          <h2 id="cormDialogTitle">Add a corm</h2>
+        </div>
+        <button type="button" class="close" data-close="cormDialog">×</button>
+      </div>
+
+      <input id="cormId" type="hidden">
+
+      <label>Plant / variety
+        <input id="cormName" required placeholder="Alocasia Frydek Variegated">
+      </label>
+
+      <div class="two-col">
+        <label>Quantity
+          <input id="cormQty" type="number" min="1" value="1" required>
+        </label>
+        <label>Status
+          <select id="cormStatus">
+            <option>Dormant</option>
+            <option>Sprouting</option>
+            <option>Rooted</option>
+            <option>Ready to pot</option>
+          </select>
+        </label>
+      </div>
+
+      <label>Photos
+        <input id="cormPhotos" type="file" accept="image/*" multiple>
+      </label>
+
+      <div id="cormPhotoPreview" class="preview-strip"></div>
+
+      <label>Notes
+        <textarea id="cormNotes" rows="3" placeholder="Date started, medium, humidity, roots, leaf progress…"></textarea>
+      </label>
+
+      <div class="sheet-actions">
+        <button type="button" class="soft-btn" data-close="cormDialog">Cancel</button>
+        <button type="submit" class="cute-btn tan-solid">Save corm</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
